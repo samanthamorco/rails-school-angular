@@ -1,0 +1,29 @@
+<h1>Rails School!</h1>
+
+<div ng-app="app">
+  {{ 1 + 1 }}
+  <div ng-controller="peopleCtrl" ng-init="setup()">
+    <input ng-model="nameFilter.first_name">
+    <input ng-model="nameFilter.last_name">
+    <div ng-repeat="person in people | filter: nameFilter">
+      <p>First Name: {{ person.first_name }}</p>
+      <p>Last Name: {{ person.last_name }}</p>
+      <p>House: {{ person.house }}</p>
+
+      <button ng-click="deletePerson($index)">Avada Kedavra!</button>
+      <button ng-click="editPerson = !editPerson">Edit Character?</button>
+
+      <div ng-if="editPerson">
+        Edit Character
+        First Name: <input ng-model="editFirstName" />
+        Last Name: <input ng-model="editLastName" />
+        <button ng-click="updatePerson(editFirstName, editLastName, $index)">Edit Character</button>
+      </div>
+    </div>
+
+    First Name: <input ng-model="firstName" />
+    Last Name: <input ng-model="lastName" />
+    <button ng-click="addCharacter(firstName, lastName)">Add Character</button>
+
+  </div>
+</div>
